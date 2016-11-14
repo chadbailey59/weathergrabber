@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+<<<<<<< e71452344b7daa0289319e6bfa0cb210380df71b
 # C extensions
 *.so
 
@@ -87,3 +88,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+=======
+.venv
+.env
+*.log
+
+
+>>>>>>> initial commit
