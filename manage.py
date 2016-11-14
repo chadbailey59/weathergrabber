@@ -2,11 +2,6 @@
 import os
 import sys
 
-# dotenv
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
-# dotenv
-
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "weathergrabber.settings")
     try:
