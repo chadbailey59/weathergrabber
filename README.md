@@ -20,7 +20,7 @@ Fortunately, redis is about as low-latency as we can get on a platform like Hero
 
 The pattern I chose uses simple integer division to create redis keys. This allows for arbitrary reset periods from 1 second upwards. The main weakness with this particular approach is a first-time premature reset. Say the UNIX time of the first request is `1479104633` and we've set the reset period to 10 seconds. Since I chose integer division, the period will next reset at `1479104640` and every 10 seconds thereafter. But the first window is only 7 seconds long, which means it would be possible to send the maximum number of requests in only 7 seconds, reset the counter, and send the maximum number again in the next 3 seconds.
 
-There are a variety of ways to design around this. For example, I could choose to store the initial counter time in redis and use it to calculate an offset. For example, using something like `offset = current_time % period` would give me an offset of `3` in the above example. Subsequent iterations could use `current_time - offset` as the redis key to ensure all periods are 10 seconds.
+There are a variety of ways to design around this. For example, I could choose to store the initial counter time in redis and use it to calculate an offset. Using something like `offset = current_time % period` would give me an offset of `3` in the above example. Subsequent iterations could use `current_time - offset` as the redis key to ensure all periods are 10 seconds.
 
 I considered setting the redis key expiration to the rate limiting period whenever the counter returned 1, but I think there are some edge cases that could prove unreliable.
 
