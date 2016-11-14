@@ -11,7 +11,7 @@ def index(request):
     ]
     city_tasks = [get_weather.delay(city['lat'], city['long']) for city in cities_list]
     for index, city in enumerate(cities_list):
-        cities_list[index]['temperature'] = city_tasks[index].get(timeout=2)
+        cities_list[index]['temperature'] = city_tasks[index].get(timeout=10)
 
     template = loader.get_template('weather/index.html')
     context = {'cities_list': cities_list}
