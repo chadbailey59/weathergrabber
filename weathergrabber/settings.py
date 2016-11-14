@@ -25,7 +25,7 @@ SECRET_KEY = ')#1ni+a98gqnvd74=$xd^dc1ptt9hxtg_8cwkgi1+&4#s4nc)m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['weathergrabber.herokuapp.com']
 
 
 # Application definition
